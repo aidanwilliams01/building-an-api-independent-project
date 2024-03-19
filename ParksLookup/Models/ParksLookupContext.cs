@@ -13,7 +13,9 @@ namespace ParksLookup.Models
         {
             builder.Entity<Park>()
               .HasData(
-                new Park { ParkId = 1 }
+                new Park { ParkId = 1, Name = "Acadia", Type = "National", Location = "Maine" },
+                new Park { ParkId = 2, Name = "Great Smoky Mountains", Type = "National", Location = "Tennessee" },
+                new Park { ParkId = 3, Name = "Beacon Rock", Type = "State", Location = "Washington" }
               );
         }
     }
