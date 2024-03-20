@@ -117,7 +117,7 @@ namespace ParksLookup.Controllers
     public async Task<ActionResult<IEnumerable<Park>>> ParkSearch(string name)
     {
       IQueryable<Park> query = _db.Parks.AsQueryable();
-      query = query.Where(entry => entry.Name == name);
+      query = query.Where(entry => entry.Name.Contains(name));
 
       return await query.ToListAsync();
     }
