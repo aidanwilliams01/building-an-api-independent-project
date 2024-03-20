@@ -19,17 +19,6 @@ namespace ParksLookup.Controllers
     public async Task<ActionResult<IEnumerable<Park>>> Get()
     {
       IQueryable<Park> query = _db.Parks.AsQueryable();
-      // query = query.Where(entry => entry.Group == group);
-
-      // if (earlierDateTime != null)
-      // {
-      //   query = query.Where(entry => entry.ParkDateTime >= DateTime.Parse(earlierDateTime));
-      // }
-
-      // if (laterDateTime != null)
-      // {
-      //   query = query.Where(entry => entry.ParkDateTime <= DateTime.Parse(laterDateTime));
-      // }
 
       return await query.ToListAsync();
     }
@@ -64,10 +53,6 @@ namespace ParksLookup.Controllers
       }
 
       Park parkToModify = await _db.Parks.FindAsync(id);
-      // if (userName != parkToModify.UserName)
-      // {
-      //   return BadRequest();
-      // }
       
       _db.ChangeTracker.Clear();
       _db.Parks.Update(park);
@@ -105,15 +90,36 @@ namespace ParksLookup.Controllers
         return NotFound();
       }
 
-      // if (userName != park.UserName)
-      // {
-      //   return BadRequest();
-      // }
-
       _db.Parks.Remove(park);
       await _db.SaveChangesAsync();
 
       return NoContent();
+    }
+
+    [HttpGet("RandomPark")]
+    public async Task<ActionResult<Park>> GetRandomPark()
+    {
+      IQueryable<Park> query = _db.Parks.AsQueryable();
+      int parks = query.Count();
+      Random rnd = new Random();
+      int id = rnd.Next(1, parks+1);
+      Park park = await _db.Parks.FindAsync(id);
+
+      if (park == null)
+      {
+        return NotFound();
+      }
+
+      return park;
+    }
+
+    [HttpGet("Search/{name}")]
+    public async Task<ActionResult<IEnumerable<Park>>> ParkSearch(string name)
+    {
+      IQueryable<Park> query = _db.Parks.AsQueryable();
+      query = query.Where(entry => entry.Name == name);
+
+      return await query.ToListAsync();
     }
   }
 }
