@@ -6,6 +6,7 @@
 
 * _C#_
 * _.NET_
+* _MySQL_
 
 ## Description
 
@@ -17,13 +18,13 @@ A collection of API endpoints for looking up state and national parks.
 
 2. `GET https://localhost:5001/api/Parks/{id}`
 
-    Returns the message specified by a parkId.
+    Returns the park specified by a parkId.
 
     Example: `https://localhost:5001/api/Parks/1`
 
 3. `POST https://localhost:5001/api/Parks`
 
-    Posts a new message. Requires a request body containing the field values for the new park.
+    Posts a new park. Requires a request body containing the field values for the new park.
 
     Example:
 
@@ -35,7 +36,7 @@ A collection of API endpoints for looking up state and national parks.
 
 4. `PUT https://localhost:5001/api/Parks/{id}`
 
-    Edits the message specified by an ID. Requires a request body containing the edited field values for the message.
+    Edits the park specified by an ID. Requires a request body containing the edited field values for the park.
 
     Example request URL: `https://localhost:5001/api/Parks/1/`
 
@@ -50,7 +51,7 @@ A collection of API endpoints for looking up state and national parks.
 
 5. `DELETE https://localhost:5001/api/Parks/{id}`
 
-    Deletes the message specified by an ID.
+    Deletes the park specified by an ID.
 
     Example: `DELETE https://localhost:5001/api/Parks/1/`
 
@@ -75,7 +76,7 @@ CORS is enabled for this API, allowing users to make requests from a domain othe
     
         `{
           "ConnectionStrings": {
-            "DefaultConnection": "Server=localhost;Port=3306;database=[YOUR-DATABASE-NAME];uid=[YOUR-USERNAME-HERE];pwd=[YOUR-PASSWORD-HERE];"
+            "DefaultConnection": "Server=localhost;Port=3306;database=parks_lookup;uid=[YOUR-USERNAME-HERE];pwd=[YOUR-PASSWORD-HERE];"
           }
         }`
 3. Open your terminal (e.g., Terminal or GitBash) and navigate to this project's production directory.
