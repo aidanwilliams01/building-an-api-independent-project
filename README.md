@@ -82,8 +82,8 @@ CORS is enabled for this API, allowing users to make requests from a domain othe
 3. Open your terminal (e.g., Terminal or GitBash) and navigate to this project's production directory.
 4. Run `dotnet ef database update` in the command line.
 5. Run `dotnet run` in the command line.
-6. Visit https://localhost:5001/ in your web browser.
-7. Optionally, you can run `dotnet build` to compile this website without running a local server.
+6. Visit https://localhost:5001/swagger/index.html in your web browser to test the API using Swagger (click on endpoint -> "Try it out").
+7. Alternatively, run `dotnet watch run`.
 
 ## Known Bugs
 
